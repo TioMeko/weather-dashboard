@@ -85,9 +85,9 @@ const displayCurrentWeather = (weatherData) => {
 
     document.querySelector('.weather-icon').innerHTML = `<img src="http://openweathermap.org/img/wn/${currentWeather.weather[0].icon}@2x.png">`;
     document.querySelector('.weather-date').textContent = `(${formattedDate})`;
-    document.getElementById('temperature').textContent = `${currentWeather.temp} °F`;
-    document.getElementById('wind-speed').textContent = `${currentWeather.wind_speed} MPH`;
-    document.getElementById('humidity').textContent = `${currentWeather.humidity} %`;
+    document.getElementById('temperature').textContent = `${currentWeather.temp}°F`;
+    document.getElementById('wind-speed').textContent = `${currentWeather.wind_speed} mph`;
+    document.getElementById('humidity').textContent = `${currentWeather.humidity}%`;
 }
 
 const displayWeatherForecast = (weatherData) => {
