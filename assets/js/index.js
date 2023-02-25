@@ -1,5 +1,7 @@
+// Global array to hold locations
 let recentLocations = [];
 
+// Form submission with conditionals
 const submitSearch = (event) => {
     event.preventDefault();
     const userLocation = locationInput.value;
@@ -19,6 +21,7 @@ const recentsearches = (location) => {
     updateRecentLocationsList();
 }
 
+// Creates new list items for recent searches
 const updateRecentLocationsList = () => {
     const recentLocationsList = document.getElementById('recent-locations');
     recentLocationsList.innerHTML = '';
@@ -40,12 +43,14 @@ const updateRecentLocationsList = () => {
     }
 }
 
+// Clears recent locations
 const clearRecent = () => {
     localStorage.clear();
     recentLocations = [];
     loadRecentLocations();
 }
 
+// Grabs recent locations from local storage
 const loadRecentLocations = () => {
     const locations = localStorage.getItem('recentLocations');
     if (locations) {
@@ -64,8 +69,8 @@ const onClickRecentLocation = (event) => {
     })
 }
 
+// Fetches the city or town from the API
 const getLocation = (search) => {
-
     const apiKey = '57114e0ec905ff83ebe17aa541380675';
     var apiUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${search}&limit=5&appid=${apiKey}`;
     fetch(apiUrl)
@@ -78,6 +83,7 @@ const getLocation = (search) => {
         })
 }
 
+// Displays the current weather for the day
 const displayCurrentWeather = (weatherData) => {
     const currentWeather = weatherData.current;
     console.log('Current Weather', currentWeather);
@@ -90,6 +96,7 @@ const displayCurrentWeather = (weatherData) => {
     document.getElementById('humidity').textContent = `${currentWeather.humidity}%`;
 }
 
+// Displays the forecast for the next 5 days
 const displayWeatherForecast = (weatherData) => {
     const dailyData = weatherData.daily;
 
@@ -126,6 +133,7 @@ const displayWeatherForecast = (weatherData) => {
     }
 }
 
+// Grabs the weather based off the latitude and longitude
 const getWeather = (lat, lon) => {
     var apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&exclude=minutely,hourly&appid=d91f911bcf2c0f925fb6535547a5ddc9`
     fetch(apiUrl)
